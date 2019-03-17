@@ -1,5 +1,6 @@
 package dev.hyyrokkin;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 import dev.hyyrokkin.math.MathOpperations;
@@ -12,7 +13,7 @@ public abstract class MiscellaneousOpperations {
 		for (int i = 0; i < m.getDimensionX(); i++) {
 			for (int k = 0; k < m.getDimensionX(); k++) {
 				Random rand = new Random();
-				m.setCell(i, k, rand.nextInt((10 - 1) + 1) + 1);
+				m.setCell(i, k, new BigDecimal(rand.nextInt((10 - 1) + 1) + 1));
 			}
 		}
 		return m;
@@ -23,7 +24,7 @@ public abstract class MiscellaneousOpperations {
 		for (int i = 0; i < m.getDimensionX(); i++) {
 			for (int k = 0; k < m.getDimensionX(); k++) {
 				Random rand = new Random();
-				m.setCell(i, k, rand.nextInt((10 - 1) + 1) + 1);
+				m.setCell(i, k, new BigDecimal(rand.nextInt((10 - 1) + 1) + 1));
 			}
 		}
 		return m;

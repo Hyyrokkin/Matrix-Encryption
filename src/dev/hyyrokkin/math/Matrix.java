@@ -1,65 +1,67 @@
 package dev.hyyrokkin.math;
 
+import java.math.BigDecimal;
+
 public class Matrix {
 
 	int dimensionX;
 	int dimensionY;
-	double[][] matrix;
+	BigDecimal[][] matrix;
 	
 	
 	public Matrix(int dimensionX) {
 		
 		this.dimensionX = dimensionX;
 		this.dimensionY = dimensionX;
-		this.matrix = new double[dimensionX][dimensionX];
+		this.matrix = new BigDecimal[dimensionX][dimensionX];
 		
 	}
 	public Matrix(int dimensionX, int dimensionY) {
 		
 		this.dimensionX = dimensionX;
 		this.dimensionY = dimensionY;
-		this.matrix = new double[dimensionX][dimensionY];
+		this.matrix = new BigDecimal[dimensionX][dimensionY];
 		
 	}
 	
 	
 	
 	
-	public void setMatrix(double[][] matrix) {
+	public void setMatrix(BigDecimal[][] matrix) {
 		this.matrix = matrix;
 	}
 	
-	public void setCell(int x, int y, double element) {
+	public void setCell(int x, int y, BigDecimal element) {
 		matrix[x][y] = element;
 	}
 	
-	public void setRow(double[] set, int place) {
+	public void setRow(BigDecimal[] set, int place) {
 		for(int i = 0; i <= getDimensionX(); i++) {
 			matrix[place][i] = set[i];
 		}
 	}
 	
-	public void setColum(double[] set, int place) {
+	public void setColum(BigDecimal[] set, int place) {
 		matrix[place] = set;
 	}
 	
-	public double getCell(int x, int y) {
+	public BigDecimal getCell(int x, int y) {
 		return matrix[x][y];
 	}
 	
-	public double[] getRow(int row) {
-		double[] tmp = new double[dimensionX];
+	public BigDecimal[] getRow(int row) {
+		BigDecimal[] tmp = new BigDecimal[dimensionX];
 		for(int i = 0; i < dimensionX; i++) {
 			tmp[i] = matrix[i][row];
 		}
 		return tmp;
 	}
 	
-	public double[] getColum(int colum) {
+	public BigDecimal[] getColum(int colum) {
 		return matrix[colum];
 	}
 	
-	public double[][] getMatrix(){
+	public BigDecimal[][] getMatrix(){
 		return matrix;
 	}
 	
@@ -72,11 +74,11 @@ public class Matrix {
 	}
 	
 	public void printMatrix() {
-		System.out.print("{");
+		System.out.println("{");
 		for(int i = 0; i < dimensionY; i++) {
 			String tmp = "";
 			for(int k = 0; k < dimensionX; k++) {
-				tmp = tmp + matrix[k][i] + ",";
+				tmp = tmp + matrix[k][i] + ", ";
 			}
 			System.out.println(tmp);
 		}

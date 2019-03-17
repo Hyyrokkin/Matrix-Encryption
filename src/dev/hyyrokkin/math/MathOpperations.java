@@ -1,25 +1,31 @@
 package dev.hyyrokkin.math;
 
+import java.math.BigDecimal;
+
 public abstract class MathOpperations {
 
 	public static Matrix inverse(Matrix m){
-		return multiplyInt(transpose(kofaktorMatrix(m)), 1 / determinate(m));
+		return multiplyInt(transpose(kofaktorMatrix(m)), determinate(m).divide(new BigDecimal(1)));
 	}
 	
 	public static boolean isInversibal(Matrix matrix) {
-		if(determinate(matrix) != 0 && isSquare(matrix)) {
+		if(determinate(matrix).compareTo(new BigDecimal(0)) != 0 && isSquare(matrix)) {
 			return true;
 		}
 		return false;
 	}
 	
-	public static double determinate(Matrix matrix) {
-		if(matrix.getDimensionX()<=2) {
-			return matrix.getCell(0, 0) * matrix.getCell(1, 1) - matrix.getCell(1, 0) * matrix.getCell(0, 1);
+	public static BigDecimal determinate(Matrix matrix) {
+		if(matrix.getDimensionX() == 0) {
+			return new BigDecimal(0);
+		} else if(matrix.getDimensionX() == 1) {
+			return matrix.getCell(0, 0);
+		} else if(matrix.getDimensionX() == 2) {
+			return matrix.getCell(0, 0).multiply(matrix.getCell(1, 1)).add(matrix.getCell(1, 0).multiply(matrix.getCell(0, 1)).negate()) ;
 		}
-		double tmp = 0;
+		BigDecimal tmp = new BigDecimal(0);
 		for(int i = 0; i < matrix.getDimensionX(); i++) {
-			tmp = tmp + (matrix.getCell(i, 0)* Math.pow(-1, 0 + i)) * (determinate(kofaktor(i, 0, matrix)));
+			tmp = tmp.add(matrix.getCell(i, 0).multiply(new BigDecimal(-1).pow(0 + i)).multiply(determinate(kofaktor(i, 0, matrix))));
 		}
 		return tmp;
 	}
@@ -44,11 +50,11 @@ public abstract class MathOpperations {
 		if(isMultipliable(m1, m2)) {
 			for(int x = 0; x < tmp.getDimensionX(); x++) {
 				for(int y = 0; y < tmp.getDimensionY(); y++) {
-					double[] tmpX = m1.getRow(y);
-					double[] tmpY = m2.getColum(x);
-					double tmpZ = 0;
+					BigDecimal[] tmpX = m1.getRow(y);
+					BigDecimal[] tmpY = m2.getColum(x);
+					BigDecimal tmpZ = new BigDecimal(0);
 					for(int k = 0; k < tmpX.length; k++) {
-						tmpZ =+ tmpX[k] * tmpY[k];
+						tmpZ = tmpZ.add(tmpX[k].multiply(tmpY[k]));
 					}
 					tmp.setCell(x, y, tmpZ); 
 				}
@@ -59,11 +65,11 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
-	public static Matrix multiplyInt(Matrix m1, double i1) {
+	public static Matrix multiplyInt(Matrix m1, BigDecimal i1) {
 		Matrix tmp = new Matrix(m1.getDimensionX(), m1.getDimensionY());
 			for(int x = 0; x < tmp.getDimensionX(); x++) {
 				for(int y = 0; y < tmp.getDimensionY(); y++) {
-					tmp.setCell(x, y, i1 * m1.getCell(x, y)); 
+					tmp.setCell(x, y, m1.getCell(x, y).multiply(i1)); 
 				}
 		}
 		return tmp;
@@ -91,7 +97,7 @@ public abstract class MathOpperations {
 		Matrix tmp = new Matrix(m.getDimensionX());
 		for(int x = 0; x < tmp.getDimensionX(); x++) {
 			for(int y = 0; y < tmp.getDimensionY(); y++) {
-				tmp.setCell(x, y, determinate(kofaktor(x, y, m)) * Math.pow(-1, x + y));
+				tmp.setCell(x, y, determinate(multiplyInt(kofaktor(x, y, m), new BigDecimal(-1).pow(x + y))));
 			}
 		}
 		return tmp;

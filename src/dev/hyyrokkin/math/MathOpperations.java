@@ -25,7 +25,6 @@ public abstract class MathOpperations {
 	}
 	
 
-	
 	public static boolean isSquare(Matrix matrix) {
 		if(matrix.getDimensionX() == matrix.getDimensionY()) {
 			return true;

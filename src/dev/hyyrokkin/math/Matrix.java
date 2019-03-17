@@ -7,7 +7,6 @@ public class Matrix {
 	double[][] matrix;
 	
 	
-	
 	public Matrix(int dimensionX) {
 		
 		this.dimensionX = dimensionX;

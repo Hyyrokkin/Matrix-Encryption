@@ -9,10 +9,9 @@ import dev.hyyrokkin.math.Matrix;
 public class Launcher {
 
 	public static void main(String[] args) {
-
 		
-		Matrix matrixT = MiscellaneousOpperations.generateRandomMatrix(2);
-		Matrix matrixS = MiscellaneousOpperations.getKey(2);
+		Matrix matrixT = MiscellaneousOpperations.generateMatrixFromString("a b c d");
+		Matrix matrixS = MiscellaneousOpperations.getKey(matrixT.getDimensionX());
 		Matrix matrixC = MathOpperations.multiply2M(matrixS, matrixT);
 		Matrix matrixIS = MathOpperations.inverse(matrixS);
 		Matrix matrixE = MathOpperations.multiply2M(matrixIS, matrixC);

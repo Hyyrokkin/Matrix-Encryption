@@ -15,12 +15,24 @@ public class Matrix {
 		this.dimensionY = dimensionX;
 		this.matrix = new BigDecimal[dimensionX][dimensionX];
 		
+		for(int x = 0; x < this.dimensionX; x++) {
+			for(int y = 0; y < this.dimensionX; y++) {
+				matrix[x][y] = new BigDecimal(0);
+			}
+		}
+		
 	}
 	public Matrix(int dimensionX, int dimensionY) {
 		
 		this.dimensionX = dimensionX;
 		this.dimensionY = dimensionY;
 		this.matrix = new BigDecimal[dimensionX][dimensionY];
+		
+		for(int x = 0; x < this.dimensionX; x++) {
+			for(int y = 0; y < this.dimensionX; y++) {
+				matrix[x][y] = new BigDecimal(0);
+			}
+		}
 		
 	}
 	

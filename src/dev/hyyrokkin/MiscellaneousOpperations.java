@@ -1,6 +1,8 @@
 package dev.hyyrokkin;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Random;
 
 import dev.hyyrokkin.math.MathOpperations;
@@ -36,6 +38,37 @@ public abstract class MiscellaneousOpperations {
 			tmp = generateRandomMatrix(dimensionX);
 		}while(!MathOpperations.isInversibal(tmp));
 		return tmp;
+	}
+	
+	public static Matrix generateMatrixFromString(String eingabe) {
+		char[] tmp = eingabe.toCharArray();
+		int[] ascii = new int[tmp.length];
+		BigDecimal rootM = new BigDecimal(tmp.length);
+		Matrix ende;
+		int z = 0;
+		
+		for(int k = 0; k < tmp.length; k++) {
+			ascii[k] = (int) tmp[k];
+		}
+		
+		rootM = rootM.sqrt(new MathContext(1, RoundingMode.HALF_UP));
+		do {
+			ende = new Matrix(rootM.intValue()) ;
+			rootM.add(new BigDecimal(1));
+		}while(ende.getDimensionX() * ende.getDimensionY() < ascii.length);
+		
+		rootM.subtract(new BigDecimal(1));
+		
+		for(int x = 0; x < rootM.intValue(); x++) {
+			for(int y = 0; y < rootM.intValue(); y++) {
+				if(z != ascii.length) {
+					ende.setCell(x, y, new BigDecimal(ascii[z]));
+					z++;
+				}
+			}
+		}
+		
+		return ende;
 	}
 	
 }

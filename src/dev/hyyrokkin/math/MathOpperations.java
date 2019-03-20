@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public abstract class MathOpperations {
 
 	public static Matrix inverse(Matrix m){
-		return multiplyInt(transpose(kofaktorMatrix(m)), determinate(m).divide(new BigDecimal(1)));
+		return multiplyInt(transpose(kofaktorMatrix(m)), new BigDecimal(1).divide(determinate(m)));
 	}
 	
 	public static boolean isInversibal(Matrix matrix) {

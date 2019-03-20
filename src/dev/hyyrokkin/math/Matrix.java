@@ -86,12 +86,13 @@ public class Matrix {
 	}
 	
 	public void printMatrix() {
-		System.out.println("{");
+		System.out.print("{ "+ (char)10);
 		for(int i = 0; i < dimensionY; i++) {
-			String tmp = "";
+			String tmp = "{";
 			for(int k = 0; k < dimensionX; k++) {
 				tmp = tmp + matrix[k][i] + ", ";
 			}
+			tmp = tmp + "}";
 			System.out.println(tmp);
 		}
 		System.out.print("}");

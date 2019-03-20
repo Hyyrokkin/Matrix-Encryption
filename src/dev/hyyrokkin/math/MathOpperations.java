@@ -1,11 +1,12 @@
 package dev.hyyrokkin.math;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public abstract class MathOpperations {
 
 	public static Matrix inverse(Matrix m){
-		return multiplyInt(transpose(kofaktorMatrix(m)), new BigDecimal(1).divide(determinate(m)));
+		return multiplyInt(transpose(kofaktorMatrix(m)), new BigDecimal(1).setScale(9999, RoundingMode.HALF_EVEN).divide(determinate(m).setScale(9999, RoundingMode.HALF_EVEN)));
 	}
 	
 	public static boolean isInversibal(Matrix matrix) {
@@ -97,7 +98,7 @@ public abstract class MathOpperations {
 		Matrix tmp = new Matrix(m.getDimensionX());
 		for(int x = 0; x < tmp.getDimensionX(); x++) {
 			for(int y = 0; y < tmp.getDimensionY(); y++) {
-				tmp.setCell(x, y, determinate(multiplyInt(kofaktor(x, y, m), new BigDecimal(-1).pow(x + y))));
+				tmp.setCell(x, y, new BigDecimal(-1).pow(x + y).multiply(determinate(kofaktor(x, y, m))));
 			}
 		}
 		return tmp;

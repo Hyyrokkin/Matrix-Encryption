@@ -33,9 +33,18 @@ public abstract class MiscellaneousOpperations {
 	}
 	
 	public static Matrix getKey(int dimensionX) {
-		Matrix tmp;
+		Matrix tmp = new Matrix(0);
 		do{
-			tmp = generateRandomMatrix(dimensionX);
+			while(true) {
+				try {
+					tmp = generateRandomMatrix(dimensionX);
+					new BigDecimal(1).setScale(9999, RoundingMode.HALF_EVEN).divide(MathOpperations.determinate(tmp).setScale(9999, RoundingMode.HALF_EVEN));
+					break;
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+			
 		}while(!MathOpperations.isInversibal(tmp));
 		return tmp;
 	}
@@ -69,6 +78,28 @@ public abstract class MiscellaneousOpperations {
 		}
 		
 		return ende;
+	}
+	
+	public static String generateStringFromMatrix(Matrix m) {
+		
+		char[] tmp = new char[m.getDimensionX() * m.getDimensionY()];
+		String tmpS = "";
+		int z = 0;
+		
+		for(int x = 0; x < m.getDimensionX(); x++) {
+			for(int y = 0; y < m.getDimensionY(); y++) {
+				tmp[z] = (char) m.getCell(x, y).intValue();
+				z++;
+			}
+		}
+		
+		
+		for(int i = 0; i < tmp.length; i++) {
+			tmpS = tmpS + tmp[i];
+		}
+		
+		return tmpS;
+		
 	}
 	
 }

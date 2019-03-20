@@ -9,8 +9,14 @@ import dev.hyyrokkin.math.Matrix;
 public class Launcher {
 
 	public static void main(String[] args) {
+	
+			testWorking();
 		
-		Matrix matrixT = MiscellaneousOpperations.generateMatrixFromString("a b c d");
+	}
+	
+	@SuppressWarnings("unused")
+	private static void testWorking() {
+		Matrix matrixT = MiscellaneousOpperations.generateMatrixFromString("ajkr fzmolb 7f20");
 		Matrix matrixS = MiscellaneousOpperations.getKey(matrixT.getDimensionX());
 		Matrix matrixC = MathOpperations.multiply2M(matrixS, matrixT);
 		Matrix matrixIS = MathOpperations.inverse(matrixS);
@@ -46,6 +52,7 @@ public class Launcher {
 		System.out.println("Determinate vom Ergebniss");
 		System.out.println(MathOpperations.determinate(matrixE));
 		
+		System.out.println(MiscellaneousOpperations.generateStringFromMatrix(matrixE));
 	}
 
 }

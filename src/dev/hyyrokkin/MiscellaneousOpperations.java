@@ -80,26 +80,56 @@ public abstract class MiscellaneousOpperations {
 		return ende;
 	}
 	
+	public static Matrix generateMatrixFromInt(String eingabe) {
+		Matrix ende;
+		String[] splitString = eingabe.split(",");
+		BigDecimal rootM = new BigDecimal(splitString.length);
+		int z = 0;
+
+		rootM = rootM.sqrt(new MathContext(1, RoundingMode.HALF_UP));
+		do {
+			ende = new Matrix(rootM.intValue()) ;
+			rootM.add(new BigDecimal(1));
+		}while(ende.getDimensionX() * ende.getDimensionY() < splitString.length);
+		
+		rootM.subtract(new BigDecimal(1));
+
+		for(int x = 0; x < rootM.intValue(); x++) {
+			for(int y = 0; y < rootM.intValue(); y++) {
+					ende.setCell(x, y, new BigDecimal(splitString[z]));
+					z++;
+			}
+		}				
+		return ende;
+	}
+	
 	public static String generateStringFromMatrix(Matrix m) {
 		
-		char[] tmp = new char[m.getDimensionX() * m.getDimensionY()];
 		String tmpS = "";
-		int z = 0;
 		
 		for(int x = 0; x < m.getDimensionX(); x++) {
 			for(int y = 0; y < m.getDimensionY(); y++) {
-				tmp[z] = (char) m.getCell(x, y).intValue();
-				z++;
+				tmpS = tmpS + (char) m.getCell(x, y).intValue();
 			}
-		}
-		
-		
-		for(int i = 0; i < tmp.length; i++) {
-			tmpS = tmpS + tmp[i];
 		}
 		
 		return tmpS;
 		
 	}
+	
+	public static String generateRawStringFromMatrix(Matrix m) {
+		
+		String tmpS = "";
+		
+		for(int x = 0; x < m.getDimensionX(); x++) {
+			for(int y = 0; y < m.getDimensionY(); y++) {
+				tmpS = tmpS + m.getCell(x, y).intValue() + ",";
+			}
+		}
+		
+		return tmpS;
+		
+	}
+
 	
 }

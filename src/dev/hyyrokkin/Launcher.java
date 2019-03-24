@@ -64,8 +64,7 @@ public class Launcher {
 			break;
 		}
 	}
-	
-	@SuppressWarnings("unused")
+
 	private static void testWorking() {
 		Matrix matrixT = MiscellaneousOpperations.generateMatrixFromString("Hallo was");
 		Matrix matrixS = MiscellaneousOpperations.getKey(matrixT.getDimensionX());

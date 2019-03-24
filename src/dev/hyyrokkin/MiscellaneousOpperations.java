@@ -10,6 +10,10 @@ import dev.hyyrokkin.math.Matrix;
 
 public abstract class MiscellaneousOpperations {
 	
+	/*
+	 * Gibt eien quardratische Matrix mit zufälligen Elementen zurückl
+	 * 	Nimmt ein Int(Größe der neuen Matrix in X und Y)
+	 */
 	public static Matrix generateRandomMatrix(int dimensionX) {
 		Matrix m = new Matrix(dimensionX);
 		for (int i = 0; i < m.getDimensionX(); i++) {
@@ -21,6 +25,10 @@ public abstract class MiscellaneousOpperations {
 		return m;
 	}
 	
+	/*
+	 * Gibt eien beliebig große Matrix mit zufälligen Elementen zurückl
+	 * 	Nimmt 2 Int(Größe der neuen Matrix in X, Größe der neuen Matrix in Y)
+	 */
 	public static Matrix generateRandomMatrix(int dimensionX, int demensionY) {
 		Matrix m = new Matrix(dimensionX, demensionY);
 		for (int i = 0; i < m.getDimensionX(); i++) {
@@ -32,6 +40,9 @@ public abstract class MiscellaneousOpperations {
 		return m;
 	}
 	
+	/*
+	 * Gibt eine Matrix zurück die als Schlüssel genutzt werden kann
+	 */
 	public static Matrix getKey(int dimensionX) {
 		Matrix tmp = new Matrix(0);
 		do{
@@ -48,6 +59,7 @@ public abstract class MiscellaneousOpperations {
 		}while(!MathOpperations.isInversibal(tmp));
 		return tmp;
 	}
+	
 	
 	public static Matrix generateMatrixFromString(String eingabe) {
 		char[] tmp = eingabe.toCharArray();
@@ -80,6 +92,10 @@ public abstract class MiscellaneousOpperations {
 		return ende;
 	}
 	
+	/*
+	 * Generirt eine Matrix aus einem String aus ascii Zahlen
+	 * 	Beispiel: 123,456,789
+	 */
 	public static Matrix generateMatrixFromInt(String eingabe) {
 		Matrix ende;
 		String[] splitString = eingabe.split(",");
@@ -103,6 +119,10 @@ public abstract class MiscellaneousOpperations {
 		return ende;
 	}
 	
+	/*
+	 * Convertiert einen String aus ascii Zahlen in Buchstaben
+	 * 	Nimmt einen String, Beispiel: 123,456,789
+	 */
 	public static String generateStringFromMatrix(Matrix m) {
 		
 		String tmpS = "";
@@ -117,6 +137,9 @@ public abstract class MiscellaneousOpperations {
 		
 	}
 	
+	/*
+	 * Gibt einen String aus indem die werte der der matrix sind
+	 */
 	public static String generateRawStringFromMatrix(Matrix m) {
 		
 		String tmpS = "";

@@ -5,10 +5,22 @@ import java.math.RoundingMode;
 
 public abstract class MathOpperations {
 
+	/*
+	 * Invertiert eine Matrix
+	 * 	Nimmt eine Matrix(zu invertirende MAtrix)
+	 */
 	public static Matrix inverse(Matrix m){
-		return multiplyInt(transpose(kofaktorMatrix(m)), new BigDecimal(1).setScale(9999, RoundingMode.HALF_EVEN).divide(determinate(m).setScale(9999, RoundingMode.HALF_EVEN)));
+		Matrix ret = new Matrix(1);
+		if(isInversibal(m)) {
+			ret = multiplyInt(transpose(kofaktorMatrix(m)), new BigDecimal(1).setScale(9999, RoundingMode.HALF_EVEN).divide(determinate(m).setScale(9999, RoundingMode.HALF_EVEN)));
+		}
+		return ret;
 	}
 	
+	/*
+	 * Gibt an ob eine Matrix Inversierbar ist
+	 * 	Nimmt eine Matrix(zu überprüfende Matrix)
+	 */
 	public static boolean isInversibal(Matrix matrix) {
 		if(determinate(matrix).compareTo(new BigDecimal(0)) != 0 && isSquare(matrix)) {
 			return true;
@@ -16,6 +28,10 @@ public abstract class MathOpperations {
 		return false;
 	}
 	
+	/*
+	 * Gibt die Determinate einer Matrix zurück
+	 * 	Nimmt eine Matrix(zu findende Determinate)
+	 */
 	public static BigDecimal determinate(Matrix matrix) {
 		if(matrix.getDimensionX() == 0) {
 			return new BigDecimal(0);
@@ -31,7 +47,10 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
-
+	/*
+	 * Gibt zurück ob eine Matrix quardratisch ist
+	 * 	Nimmt eine Matrix(zu überprüfende Matrix)
+	 */
 	public static boolean isSquare(Matrix matrix) {
 		if(matrix.getDimensionX() == matrix.getDimensionY()) {
 			return true;
@@ -39,6 +58,10 @@ public abstract class MathOpperations {
 		return false;
 	}
 	
+	/*
+	 * Gibt zurück ob 2 Matritzen multiplizierbar sind
+	 * 	Nimmt 2 Matrix(zu überprüfende 1, zu überprüfende 2)
+	 */
 	public static boolean isMultipliable(Matrix m1, Matrix m2) {
 		if(m1.getDimensionY() == m2.getDimensionX()) {
 			return true;
@@ -46,6 +69,10 @@ public abstract class MathOpperations {
 		return false;
 	}
 	
+	/*
+	 * Multiplieziert 2 Matritzen
+	 * 	Nimmt 2 Matrix(zu multipliezirende Matrix 1, zu multipliezirende Matrix 2)
+	 */
 	public static Matrix multiply2M(Matrix m1, Matrix m2) {
 		Matrix tmp = new Matrix(m1.getDimensionY(), m2.getDimensionX());
 		if(isMultipliable(m1, m2)) {
@@ -66,6 +93,10 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
+	/*
+	 * Multipliezirt eine Matrix mit einem Int
+	 * 	Nimmt 1 Matrix(zu multipliezirende Matrix) und 1 Int(zu multipliezirende Int)
+	 */
 	public static Matrix multiplyInt(Matrix m1, BigDecimal i1) {
 		Matrix tmp = new Matrix(m1.getDimensionX(), m1.getDimensionY());
 			for(int x = 0; x < tmp.getDimensionX(); x++) {
@@ -76,6 +107,7 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
+	//Wichtiges Zeug
 	public static Matrix kofaktor(int sX, int sY, Matrix m){
 		Matrix tmp = new Matrix(m.getDimensionX()-1);
 		for(int x = 0; x < m.getDimensionX(); x++) {
@@ -94,6 +126,7 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
+	//Auch wichtiges Zeug
 	public static Matrix kofaktorMatrix(Matrix m) {
 		Matrix tmp = new Matrix(m.getDimensionX());
 		for(int x = 0; x < tmp.getDimensionX(); x++) {
@@ -101,7 +134,7 @@ public abstract class MathOpperations {
 				tmp.setCell(x, y, new BigDecimal(-1).pow(x + y).multiply(determinate(kofaktor(x, y, m))));
 			}
 		}
-		return tmp;
+		return tmp; 
 	}
 	
 	public static Matrix transpose(Matrix m) {

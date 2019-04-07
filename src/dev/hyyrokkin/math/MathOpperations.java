@@ -93,7 +93,7 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
-	/*
+	/**
 	 * Multipliezirt eine Matrix mit einem Int
 	 * 	Nimmt 1 Matrix(zu multipliezirende Matrix) und 1 Int(zu multipliezirende Int)
 	 */

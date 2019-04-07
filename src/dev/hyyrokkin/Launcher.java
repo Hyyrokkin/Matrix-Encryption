@@ -12,37 +12,37 @@ public class Launcher {
 	
 		switch(args[0]){
 		
-		case "encrypt":	
+		case "verschlüsseln":	
 			
 			if(args[1] == null) {
-				System.out.println("Use a 'good' String to get a encrypted matrix and a key matrix");
+				System.out.println("Benutze einen 'guten' String um eine verschlüsselte Matrix und einen Schlüssel zu erhalten.");
 			}else {
 				Matrix tmpT = MiscellaneousOpperations.generateMatrixFromString(args[1]);
 				Matrix tmpK = MiscellaneousOpperations.getKey(tmpT.getDimensionX());
 				Matrix tmpC = MathOpperations.multiply2M(tmpK, tmpT);
-				System.out.println("This is the encrypted Matrix and String.");
+				System.out.println("Das ist die verschlüsselte Matrix und String.");
 				tmpC.printMatrix();
 				System.out.println("");
 				System.out.println(MiscellaneousOpperations.generateRawStringFromMatrix(tmpC));
 				System.out.println("");
 				System.out.println("");
 				System.out.println("");
-				System.out.println("This is the key that was used to encrypt the Matrix.");
+				System.out.println("Das ist der Schlüssel der genutzt wurde um die Matrix zu verschlüsselm.");
 				tmpK.printMatrix();
 				System.out.println("");
 				System.out.println(MiscellaneousOpperations.generateRawStringFromMatrix(tmpK));
 			}
 			break;
 			
-		case "decrypt":	
+		case "entschlüsseln":	
 			
 			if(args[1] == null) {
-				System.out.println("Use a encrypted String without the last ',' and an key without the lalst ',' to decrypt");
+				System.out.println("Benutze einen verschlüsselten String ohne das letzte ',' und einen Schlüssel ohne das letzte ',' um die Matrix zu entschlüsseln.");
 			}else {
 				Matrix tmpC = MiscellaneousOpperations.generateMatrixFromInt(args[1]);
 				Matrix tmpIK = MathOpperations.inverse(MiscellaneousOpperations.generateMatrixFromInt(args[2]));
 				Matrix tmpT = MathOpperations.multiply2M(tmpIK, tmpC);
-				System.out.println("This is the decrypted Text.");
+				System.out.println("Das ist der entschlüsselte Text");
 				tmpT.printMatrix();
 				System.out.println("");
 				System.out.println(MiscellaneousOpperations.generateStringFromMatrix(tmpT));
@@ -58,9 +58,9 @@ public class Launcher {
 			
 		default:
 			
-			System.out.println("You have done something wrong!");
-			System.out.println("Use encrypt or decrypt to get some info.");
-			System.out.println("'test' gives u a exapel for values.");
+			System.out.println("Du hast etwas falsch gemacht!");
+			System.out.println("Schreibe 'verschlüsseln' oder 'entschlüsseln' um Infos zu erhalten.");
+			System.out.println("'test' gibt ein par Testwerte wieder.");
 			break;
 		}
 	}
@@ -73,6 +73,7 @@ public class Launcher {
 		Matrix matrixE = MathOpperations.multiply2M(matrixIS, matrixC);
 		
 		System.out.println("Text");
+		System.out.println("Hallo was");
 		matrixT.printMatrix();
 		System.out.println("Determinate vom Text");
 		System.out.println(MathOpperations.determinate(matrixT));

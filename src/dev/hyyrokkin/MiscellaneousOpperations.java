@@ -10,7 +10,7 @@ import dev.hyyrokkin.math.Matrix;
 
 public abstract class MiscellaneousOpperations {
 	
-	/*
+	/**
 	 * Gibt eien quardratische Matrix mit zufälligen Elementen zurückl
 	 * 	Nimmt ein Int(Größe der neuen Matrix in X und Y)
 	 */
@@ -19,13 +19,13 @@ public abstract class MiscellaneousOpperations {
 		for (int i = 0; i < m.getDimensionX(); i++) {
 			for (int k = 0; k < m.getDimensionX(); k++) {
 				Random rand = new Random();
-				m.setCell(i, k, new BigDecimal(rand.nextInt((10 - 1) + 1) + 1));
+				m.setCell(i, k, new BigDecimal(rand.nextInt((128 - 1) + 1) + 1));
 			}
 		}
 		return m;
 	}
 	
-	/*
+	/**
 	 * Gibt eien beliebig große Matrix mit zufälligen Elementen zurückl
 	 * 	Nimmt 2 Int(Größe der neuen Matrix in X, Größe der neuen Matrix in Y)
 	 */
@@ -34,13 +34,13 @@ public abstract class MiscellaneousOpperations {
 		for (int i = 0; i < m.getDimensionX(); i++) {
 			for (int k = 0; k < m.getDimensionX(); k++) {
 				Random rand = new Random();
-				m.setCell(i, k, new BigDecimal(rand.nextInt((10 - 1) + 1) + 1));
+				m.setCell(i, k, new BigDecimal(rand.nextInt((128 - 1) + 1) + 1));
 			}
 		}
 		return m;
 	}
 	
-	/*
+	/**
 	 * Gibt eine Matrix zurück die als Schlüssel genutzt werden kann
 	 */
 	public static Matrix getKey(int dimensionX) {
@@ -60,7 +60,10 @@ public abstract class MiscellaneousOpperations {
 		return tmp;
 	}
 	
-	
+	/**
+	 * Generiert eine Matrix aud einem Buchstaben String
+	 * 	Nimmt einen String(Außgangs String)
+	 */
 	public static Matrix generateMatrixFromString(String eingabe) {
 		char[] tmp = eingabe.toCharArray();
 		int[] ascii = new int[tmp.length];
@@ -92,7 +95,7 @@ public abstract class MiscellaneousOpperations {
 		return ende;
 	}
 	
-	/*
+	/**
 	 * Generirt eine Matrix aus einem String aus ascii Zahlen
 	 * 	Beispiel: 123,456,789
 	 */
@@ -119,7 +122,7 @@ public abstract class MiscellaneousOpperations {
 		return ende;
 	}
 	
-	/*
+	/**
 	 * Convertiert einen String aus ascii Zahlen in Buchstaben
 	 * 	Nimmt einen String, Beispiel: 123,456,789
 	 */
@@ -137,7 +140,7 @@ public abstract class MiscellaneousOpperations {
 		
 	}
 	
-	/*
+	/**
 	 * Gibt einen String aus indem die werte der der matrix sind
 	 */
 	public static String generateRawStringFromMatrix(Matrix m) {

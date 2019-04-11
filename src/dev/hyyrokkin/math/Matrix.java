@@ -9,7 +9,7 @@ public class Matrix {
 	int dimensionY;
 	BigDecimal[][] matrix;
 	
-	/*
+	/**
 	 * Konstrucktor für eine Quardratische Matrix
 	 * 	Nimmt 1 Int(Größe x und y)
 	 */
@@ -27,7 +27,7 @@ public class Matrix {
 		
 	}
 	
-	/*
+	/**
 	 * Konstrucktor für eine Matrix mit beliber Größe
 	 * 	Nimmt 2 Int(Größe x, Größe y)
 	 */
@@ -47,7 +47,7 @@ public class Matrix {
 	
 	
 	
-	/*
+	/**
 	 * Methode zum setzen einer Matrix
 	 * 	Nimmt ein zweidimensional BigDecimal Array
 	 */
@@ -55,7 +55,7 @@ public class Matrix {
 		this.matrix = matrix;
 	}
 	
-	/*
+	/**
 	 * Setzt eine element in der Matrix auf einen bestimmten Wert
 	 * 	Nimmt 2 Int(Position x, position y) und ein BigDecimal(elemnt zum setzen)
 	 */
@@ -63,7 +63,7 @@ public class Matrix {
 		matrix[x][y] = element;
 	}
 	
-	/*
+	/**
 	 * Setzt eine bestimmt Reihe auf ein BigDecimal Array
 	 * 	Nimmt ein BigDecimal Array(zu setzende Reihe) und ein Int(zu setzende stelle)
 	 */
@@ -73,7 +73,7 @@ public class Matrix {
 		}
 	}
 	
-	/*
+	/**
 	 * Setzt eine bestimmt Zeile auf ein BigDecimal Array
 	 * 	Nimmt ein BigDecimal Array(zu setzende Zeile) und ein Int(zu setzende stelle)
 	 */
@@ -81,7 +81,7 @@ public class Matrix {
 		matrix[place] = set;
 	}
 	
-	/*
+	/**
 	 * Gibt das Element an einer Bestimmte Stelle zurück
 	 * 	Nimmt 2 Int(Position x und y)
 	 */
@@ -89,7 +89,7 @@ public class Matrix {
 		return matrix[x][y];
 	}
 	
-	/*
+	/**
 	 * Gibt eine Bestimte Reihe zurück
 	 * 	Nimmt ein Int(Zu bearbeitende Reihe)
 	 */
@@ -101,7 +101,7 @@ public class Matrix {
 		return tmp;
 	}
 	
-	/*
+	/**
 	 * Gibt eine Bestimte Zeile zurück
 	 * 	Nimmt ein Int(Zu bearbeitende Zeile)
 	 */
@@ -109,28 +109,28 @@ public class Matrix {
 		return matrix[colum];
 	}
 	
-	/*
+	/**
 	 * Gibt die Matrix zurück
 	 */
 	public BigDecimal[][] getMatrix(){
 		return matrix;
 	}
 	
-	/*
+	/**
 	 * Gibt die X größe zurück
 	 */
 	public int getDimensionX() {
 		return dimensionX;
 	}
 	
-	/*
+	/**
 	 * Gibt die Y Größe zurück
 	 */
 	public int getDimensionY() {
 		return dimensionY;
 	}
 	
-	/*
+	/**
 	 * Gibt die Matrix in der Konsole aus
 	 * 	Beispiel:
 	 * 		{

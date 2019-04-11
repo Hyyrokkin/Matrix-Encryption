@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public abstract class MathOpperations {
 
-	/*
+	/**
 	 * Invertiert eine Matrix
 	 * 	Nimmt eine Matrix(zu invertirende MAtrix)
 	 */
@@ -17,7 +17,7 @@ public abstract class MathOpperations {
 		return ret;
 	}
 	
-	/*
+	/**
 	 * Gibt an ob eine Matrix Inversierbar ist
 	 * 	Nimmt eine Matrix(zu überprüfende Matrix)
 	 */
@@ -28,7 +28,7 @@ public abstract class MathOpperations {
 		return false;
 	}
 	
-	/*
+	/**
 	 * Gibt die Determinate einer Matrix zurück
 	 * 	Nimmt eine Matrix(zu findende Determinate)
 	 */
@@ -47,7 +47,7 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
-	/*
+	/**
 	 * Gibt zurück ob eine Matrix quardratisch ist
 	 * 	Nimmt eine Matrix(zu überprüfende Matrix)
 	 */
@@ -58,7 +58,7 @@ public abstract class MathOpperations {
 		return false;
 	}
 	
-	/*
+	/**
 	 * Gibt zurück ob 2 Matritzen multiplizierbar sind
 	 * 	Nimmt 2 Matrix(zu überprüfende 1, zu überprüfende 2)
 	 */
@@ -69,7 +69,7 @@ public abstract class MathOpperations {
 		return false;
 	}
 	
-	/*
+	/**
 	 * Multiplieziert 2 Matritzen
 	 * 	Nimmt 2 Matrix(zu multipliezirende Matrix 1, zu multipliezirende Matrix 2)
 	 */
@@ -107,7 +107,10 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
-	//Wichtiges Zeug
+	/**
+	 * Bestimmt den Kofaktor in einem angegebenen Punkt
+	 * 	Nimmt 2 Int(x und y position) und die Matrix(Element aus Matrix bestimmen)
+	 */
 	public static Matrix kofaktor(int sX, int sY, Matrix m){
 		Matrix tmp = new Matrix(m.getDimensionX()-1);
 		for(int x = 0; x < m.getDimensionX(); x++) {
@@ -126,7 +129,11 @@ public abstract class MathOpperations {
 		return tmp;
 	}
 	
-	//Auch wichtiges Zeug
+	/**
+	 * Gibt die Kofaktormatrix einer Matrix zurück
+	 *	Nimmt eine Matrix(Zu bestimmende Matrix)
+	 */
+		
 	public static Matrix kofaktorMatrix(Matrix m) {
 		Matrix tmp = new Matrix(m.getDimensionX());
 		for(int x = 0; x < tmp.getDimensionX(); x++) {
@@ -137,6 +144,10 @@ public abstract class MathOpperations {
 		return tmp; 
 	}
 	
+	/**
+	 * Transponiert eine Matrix
+	 * 	Nimmt eine Matrix(zu tranasponierende Matrix)
+	 */
 	public static Matrix transpose(Matrix m) {
 		Matrix end = new Matrix(m.getDimensionX());
 		for(int i = 0; i < m.getDimensionX(); i++) {

@@ -8,7 +8,6 @@ public class Matrix
 
 	//Größe der Matrix
 	private int dimensionX;
-	private int dimensionY;
 	private BigDecimal[][] matrix;
 	
 	/**
@@ -18,7 +17,6 @@ public class Matrix
 	public Matrix(int dimensionX)
 	{
 		this.dimensionX = dimensionX;
-		this.dimensionY = dimensionX;
 		this.matrix = new BigDecimal[dimensionX][dimensionX];
 		
 		for(int x = 0; x < this.dimensionX; x++)
@@ -38,18 +36,6 @@ public class Matrix
 	public void setCell(int x, int y, BigDecimal element)
 	{
 		matrix[x][y] = element.setScale(9999, RoundingMode.HALF_EVEN);
-	}
-	
-	/**
-	 * Setzt eine bestimmt Reihe auf ein BigDecimal Array
-	 * 	Nimmt ein BigDecimal Array(zu setzende Reihe) und ein Int(zu setzende stelle)
-	 */
-	public void setRow(BigDecimal[] set, int place)
-	{
-		for(int i = 0; i <= getDimensionX(); i++)
-		{
-			matrix[place][i] = set[i];
-		}
 	}
 	
 	/**
@@ -101,14 +87,7 @@ public class Matrix
 	{
 		return dimensionX;
 	}
-	
-	/**
-	 * Gibt die Y Größe zurück
-	 */
-	public int getDimensionY()
-	{
-		return dimensionY;
-	}
+
 	
 	/**
 	 * Gibt die Matrix in der Konsole aus
@@ -121,7 +100,7 @@ public class Matrix
 	 */
 	public void printMatrix()
 	{
-		for(int i = 0; i < dimensionY; i++)
+		for(int i = 0; i < dimensionX; i++)
 		{
 			String tmp = "{";
 			for(int k = 0; k < dimensionX; k++)

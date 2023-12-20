@@ -65,7 +65,7 @@ public class MiscellaneousOpperations {
 			ende = new Matrix(rootM.intValue()) ;
 			rootM = rootM.add(BigDecimal.ONE);
 		}
-		while(ende.getDimensionX() * ende.getDimensionY() < ascii.length);
+		while(ende.getDimensionX() * ende.getDimensionX() < ascii.length);
 		
 		for(int x = 0; x < rootM.intValue() - 1; x++)
 		{
@@ -99,7 +99,7 @@ public class MiscellaneousOpperations {
 			ende = new Matrix(rootM.intValue()) ;
 			rootM = rootM.add(BigDecimal.ONE);
 		}
-		while(ende.getDimensionX() * ende.getDimensionY() < splitString.length);
+		while(ende.getDimensionX() * ende.getDimensionX() < splitString.length);
 
 		for(int x = 0; x < rootM.intValue(); x++)
 		{
@@ -124,7 +124,7 @@ public class MiscellaneousOpperations {
 
 		for(int x = 0; x < m.getDimensionX(); x++)
 		{
-			for(int y = 0; y < m.getDimensionY(); y++)
+			for(int y = 0; y < m.getDimensionX(); y++)
 			{
 				tmpS.append((char) m.getCell(x, y).round(mc).intValue());
 			}
@@ -144,7 +144,7 @@ public class MiscellaneousOpperations {
 		
 		for(int x = 0; x < m.getDimensionX(); x++)
 		{
-			for(int y = 0; y < m.getDimensionY(); y++)
+			for(int y = 0; y < m.getDimensionX(); y++)
 			{
 				tmpS.append(m.getCell(x, y).intValue()).append(",");
 			}

@@ -1,9 +1,5 @@
 package dev.hyyrokkin;
 
-import javax.swing.JOptionPane;
-
-//import java.math.BigDecimal;
-
 import dev.hyyrokkin.math.MathOpperations;
 import dev.hyyrokkin.math.Matrix;
 

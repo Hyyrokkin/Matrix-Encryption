@@ -68,7 +68,7 @@ public class MathOpperations
 	 */
 	public static boolean isMultipliable(Matrix m1, Matrix m2)
 	{
-		return m1.getDimensionY() == m2.getDimensionX();
+		return m1.getDimensionX() == m2.getDimensionX();
 	}
 	
 	/**
@@ -78,27 +78,20 @@ public class MathOpperations
 	public static Matrix multiply2M(Matrix m1, Matrix m2)
 	{
 		Matrix tmp = new Matrix(m1.getDimensionX());
-		if(isMultipliable(m1, m2))
+		MathContext mc = new MathContext(9999,  RoundingMode.HALF_UP);
+		for(int x = 0; x < tmp.getDimensionX(); x++)
 		{
-			MathContext mc = new MathContext(9999,  RoundingMode.HALF_UP);
-			for(int x = 0; x < tmp.getDimensionX(); x++)
+			for(int y = 0; y < tmp.getDimensionX(); y++)
 			{
-				for(int y = 0; y < tmp.getDimensionY(); y++)
+				BigDecimal[] tmpX = m1.getRow(y);
+				BigDecimal[] tmpY = m2.getColum(x);
+				BigDecimal tmpZ = new BigDecimal(0);
+				for(int k = 0; k < tmpX.length; k++)
 				{
-					BigDecimal[] tmpX = m1.getRow(y);
-					BigDecimal[] tmpY = m2.getColum(x);
-					BigDecimal tmpZ = new BigDecimal(0);
-					for(int k = 0; k < tmpX.length; k++)
-					{
-						tmpZ = tmpZ.add(tmpX[k].multiply(tmpY[k], mc));
-					}
-					tmp.setCell(x, y, tmpZ); 
+					tmpZ = tmpZ.add(tmpX[k].multiply(tmpY[k], mc));
 				}
+				tmp.setCell(x, y, tmpZ);
 			}
-		}
-		else
-		{
-			System.out.println("Error");
 		}
 		return tmp;
 	}
@@ -113,7 +106,7 @@ public class MathOpperations
 		MathContext mc = new MathContext(9999, RoundingMode.HALF_EVEN);
 		for(int x = 0; x < tmp.getDimensionX(); x++)
 		{
-			for(int y = 0; y < tmp.getDimensionY(); y++)
+			for(int y = 0; y < tmp.getDimensionX(); y++)
 			{
 				tmp.setCell(x, y, m1.getCell(x, y).multiply(i1, mc));
 			}
@@ -130,7 +123,7 @@ public class MathOpperations
 		Matrix tmp = new Matrix(m.getDimensionX()-1);
 		for(int x = 0; x < m.getDimensionX(); x++)
 		{
-			for(int y = 0; y < m.getDimensionY(); y++)
+			for(int y = 0; y < m.getDimensionX(); y++)
 			{
 				if(x < sX && y < sY)
 				{
@@ -163,7 +156,7 @@ public class MathOpperations
 		Matrix tmp = new Matrix(m.getDimensionX());
 		for(int x = 0; x < tmp.getDimensionX(); x++)
 		{
-			for(int y = 0; y < tmp.getDimensionY(); y++)
+			for(int y = 0; y < tmp.getDimensionX(); y++)
 			{
 				tmp.setCell(x, y, new BigDecimal(-1).pow(x + y).setScale(9999, RoundingMode.HALF_EVEN).multiply(determinate(kofaktor(x, y, m))));
 			}

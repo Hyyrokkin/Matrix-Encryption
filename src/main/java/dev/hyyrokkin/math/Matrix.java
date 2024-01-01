@@ -7,12 +7,12 @@ public class Matrix
 {
 
 	//Größe der Matrix
-	private int dimensionX;
+	private final int dimensionX;
 	private BigDecimal[][] matrix;
 	
 	/**
-	 * Konstrucktor für eine Quardratische Matrix
-	 * 	Nimmt 1 Int(Größe x und y)
+	 * Konstruktor für eine quadratische Matrix.
+	 * Nimmt 1 Int (Größe x)
 	 */
 	public Matrix(int dimensionX)
 	{
@@ -30,8 +30,8 @@ public class Matrix
 	}
 	
 	/**
-	 * Setzt eine element in der Matrix auf einen bestimmten Wert
-	 * 	Nimmt 2 Int(Position x, position y) und ein BigDecimal(elemnt zum setzen)
+	 * Setzt eine element in der Matrix auf einen bestimmten Wert.
+	 * Nimmt 2 Int (Position x, position y) und ein BigDecimal (Element zum Setzen)
 	 */
 	public void setCell(int x, int y, BigDecimal element)
 	{
@@ -39,8 +39,8 @@ public class Matrix
 	}
 	
 	/**
-	 * Setzt eine bestimmt Zeile auf ein BigDecimal Array
-	 * 	Nimmt ein BigDecimal Array(zu setzende Zeile) und ein Int(zu setzende stelle)
+	 * Setzt eine bestimmte Zeile auf ein BigDecimal Array.
+	 * Nimmt ein BigDecimal Array (zu setzende Zeile) und ein Int (zu setzende stelle)
 	 */
 	public void setColum(BigDecimal[] set, int place)
 	{
@@ -48,8 +48,8 @@ public class Matrix
 	}
 	
 	/**
-	 * Gibt das Element an einer Bestimmte Stelle zurück
-	 * 	Nimmt 2 Int(Position x und y)
+	 * Gibt das Element an einer bestimmten Stelle zurück.
+	 * Nimmt 2 Int (Position x und y)
 	 */
 	public BigDecimal getCell(int x, int y)
 	{
@@ -57,8 +57,8 @@ public class Matrix
 	}
 	
 	/**
-	 * Gibt eine Bestimte Reihe zurück
-	 * 	Nimmt ein Int(Zu bearbeitende Reihe)
+	 * Gibt eine bestimmte Reihe zurück.
+	 * Nimmt ein Int (Zu bearbeitende Reihe)
 	 */
 	public BigDecimal[] getRow(int row)
 	{
@@ -71,8 +71,8 @@ public class Matrix
 	}
 	
 	/**
-	 * Gibt eine Bestimte Zeile zurück
-	 * 	Nimmt ein Int(Zu bearbeitende Zeile)
+	 * Gibt eine bestimmte Zeile zurück.
+	 * Nimmt ein Int(Zu bearbeitende Zeile)
 	 */
 	public BigDecimal[] getColum(int colum)
 	{
@@ -92,23 +92,23 @@ public class Matrix
 	/**
 	 * Gibt die Matrix in der Konsole aus
 	 * 	Beispiel:
-	 * 		{
 	 * 		{ a, b, c, }
 	 * 		{ d, e, f, }
 	 * 		{ g, h, i, }
-	 * 		}
 	 */
 	public void printMatrix()
 	{
 		for(int i = 0; i < dimensionX; i++)
 		{
-			String tmp = "{";
+			StringBuilder out = new StringBuilder("{");
+
 			for(int k = 0; k < dimensionX; k++)
 			{
-				tmp = tmp + matrix[k][i].stripTrailingZeros() + ", ";
+				out.append(matrix[k][i].stripTrailingZeros());
+				out.append(", ");
 			}
-			tmp = tmp + "}";
-			System.out.println(tmp);
+			out.append("}");
+			System.out.println(out);
 		}
 		System.out.println(" ");
 	}

@@ -11,8 +11,8 @@ import dev.hyyrokkin.math.Matrix;
 public class MiscellaneousOpperations {
 	
 	/**
-	 * Gibt eien quardratische Matrix mit zufälligen Elementen zurückl
-	 * 	Nimmt ein Int(Größe der neuen Matrix in X und Y)
+	 * Gibt eie quadratische Matrix mit zufälligen Elementen zurück.
+	 * Nimmt ein Int (Größe der neuen Matrix in X und Y)
 	 */
 	public static Matrix generateRandomMatrix(int dimensionX)
 	{
@@ -38,13 +38,13 @@ public class MiscellaneousOpperations {
 		{
 			tmp = generateRandomMatrix(dimensionX);
 		}
-		while(!MathOpperations.isInversibal(tmp));
+		while(!MathOpperations.isInvertible(tmp));
 		return tmp;
 	}
 	
 	/**
-	 * Generiert eine Matrix aud einem Buchstaben String
-	 * 	Nimmt einen String(Außgangs String)
+	 * Generiert eine Matrix aud einem Buchstaben String.
+	 * Nimmt einen String (Ausgangs String)
 	 */
 	public static Matrix generateMatrixFromString(String eingabe)
 	{
@@ -83,8 +83,8 @@ public class MiscellaneousOpperations {
 	}
 	
 	/**
-	 * Generirt eine Matrix aus einem String aus ascii Zahlen
-	 * 	Beispiel: 123,456,789
+	 * Generiert eine Matrix aus einem String aus ascii Zahlen.
+	 * Beispiel: 123,456,789
 	 */
 	public static Matrix generateMatrixFromInt(String eingabe)
 	{
@@ -113,8 +113,8 @@ public class MiscellaneousOpperations {
 	}
 	
 	/**
-	 * Convertiert einen String aus ascii Zahlen in Buchstaben
-	 * 	Nimmt einen String, Beispiel: 123,456,789
+	 * Konvertiert einen String aus ascii Zahlen in Buchstaben.
+	 * Nimmt einen String, Beispiel: 123,456,789
 	 */
 	public static String generateStringFromMatrix(Matrix m)
 	{
@@ -135,7 +135,7 @@ public class MiscellaneousOpperations {
 	}
 	
 	/**
-	 * Gibt einen String aus indem die werte der der matrix sind
+	 * Gibt einen String aus, in dem die werte der matrix sind
 	 */
 	public static String generateRawStringFromMatrix(Matrix m)
 	{
@@ -158,8 +158,8 @@ public class MiscellaneousOpperations {
 	{
 		//String eingabe = "Hallo was";
 		//String eingabe = "Hallo was ist ds";
-		//String eingabe = "Jo Bro das ist cool";
-		String eingabe = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr";
+		String eingabe = "Jo Bro das ist cool";
+		//String eingabe = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr";
 		Matrix matrixT = generateMatrixFromString(eingabe);
 		System.out.println("eingabe fertig");
 		Matrix matrixS = getKey(matrixT.getDimensionX());
@@ -190,7 +190,7 @@ public class MiscellaneousOpperations {
 		matrixC.printMatrix();
 		System.out.println("Determinate von der Chiffre");
 		System.out.println(MathOpperations.determinate(matrixC).intValue());
-		System.out.println("Ciffre in Raw");
+		System.out.println("Chiffre in Raw");
 		System.out.println(generateRawStringFromMatrix(matrixC));
 
 		System.out.println();
@@ -201,9 +201,9 @@ public class MiscellaneousOpperations {
 
 
 		System.out.println();
-		System.out.println("Ergebniss");
+		System.out.println("Ergebnis");
 		matrixE.printMatrix();
-		System.out.println("Determinate vom Ergebniss");
+		System.out.println("Determinate vom Ergebnis");
 		System.out.println(MathOpperations.determinate(matrixE).intValue());
 
 		System.out.println(generateStringFromMatrix(matrixE));

@@ -8,13 +8,13 @@ public class MathOpperations
 {
 
 	/**
-	 * Invertiert eine Matrix
-	 * 	Nimmt eine Matrix (zu invertirende MAtrix)
+	 * Invertiert eine Matrix.
+	 * Nimmt eine Matrix (zu invertierende Matrix)
 	 */
 	public static Matrix inverse(Matrix m)
 	{
 		Matrix ret = new Matrix(1);
-		if(isInversibal(m))
+		if(isInvertible(m))
 		{
 			ret = multiplyInt(transpose(kofaktorMatrix(m)), BigDecimal.ONE.setScale(9999, RoundingMode.HALF_EVEN).divide(determinate(m), RoundingMode.HALF_EVEN));
 		}
@@ -26,17 +26,17 @@ public class MathOpperations
 	}
 	
 	/**
-	 * Gibt an, ob eine Matrix Inversierbar ist
-	 * 	Nimmt eine Matrix (zu überprüfende Matrix)
+	 * Gibt an, ob eine Matrix Invertierbar ist.
+	 * Nimmt eine Matrix (zu überprüfende Matrix)
 	 */
-	public static boolean isInversibal(Matrix matrix)
+	public static boolean isInvertible(Matrix matrix)
 	{
 		return determinate(matrix).compareTo(BigDecimal.ZERO) != 0;
 	}
 	
 	/**
-	 * Gibt die Determinate einer Matrix zurück
-	 * 	Nimmt eine Matrix(zu findende Determinate)
+	 * Gibt die Determinate einer Matrix zurück.
+	 * Nimmt eine Matrix (zu findende Determinate)
 	 */
 	public static BigDecimal determinate(Matrix matrix)
 	{
@@ -61,19 +61,10 @@ public class MathOpperations
 		}
 		return tmp;
 	}
-
-	/**
-	 * Gibt zurück ob 2 Matritzen multiplizierbar sind
-	 * 	Nimmt 2 Matrix(zu überprüfende 1, zu überprüfende 2)
-	 */
-	public static boolean isMultipliable(Matrix m1, Matrix m2)
-	{
-		return m1.getDimensionX() == m2.getDimensionX();
-	}
 	
 	/**
-	 * Multiplieziert 2 Matritzen
-	 * 	Nimmt 2 Matrix(zu multipliezirende Matrix 1, zu multipliezirende Matrix 2)
+	 * Multipliziert 2 Matrizen.
+	 * Nimmt 2 Matrix (zu multiplizierende Matrix 1, zu multiplizierende Matrix 2)
 	 */
 	public static Matrix multiply2M(Matrix m1, Matrix m2)
 	{
@@ -97,8 +88,8 @@ public class MathOpperations
 	}
 	
 	/**
-	 * Multipliezirt eine Matrix mit einem Int
-	 * 	Nimmt 1 Matrix(zu multipliezirende Matrix) und 1 Int(zu multipliezirende Int)
+	 * Multipliziert eine Matrix mit einem Int.
+	 * Nimmt 1 Matrix (zu multiplizierende Matrix) und 1 Int (zu multiplizierende Int)
 	 */
 	public static Matrix multiplyInt(Matrix m1, BigDecimal i1)
 	{
@@ -115,8 +106,8 @@ public class MathOpperations
 	}
 	
 	/**
-	 * Bestimmt den Kofaktor in einem angegebenen Punkt
-	 * 	Nimmt 2 Int(x und y position) und die Matrix(Element aus Matrix bestimmen)
+	 * Bestimmt den Kofaktor in einem angegebenen Punkt.
+	 * Nimmt 2 Int (x und y position) und die Matrix (Element aus Matrix bestimmen)
 	 */
 	public static Matrix kofaktor(int sX, int sY, Matrix m)
 	{
@@ -147,8 +138,8 @@ public class MathOpperations
 	}
 	
 	/**
-	 * Gibt die Kofaktormatrix einer Matrix zur�ck
-	 *	Nimmt eine Matrix(Zu bestimmende Matrix)
+	 * Gibt die Kofaktor matrix einer Matrix zurück.
+	 * Nimmt eine Matrix (Zu bestimmende Matrix)
 	 */
 		
 	public static Matrix kofaktorMatrix(Matrix m)
@@ -165,8 +156,8 @@ public class MathOpperations
 	}
 	
 	/**
-	 * Transponiert eine Matrix
-	 * 	Nimmt eine Matrix(zu tranasponierende Matrix)
+	 * Transponiert eine Matrix.
+	 * Nimmt eine Matrix (zu transponierende Matrix)
 	 */
 	public static Matrix transpose(Matrix m)
 	{
